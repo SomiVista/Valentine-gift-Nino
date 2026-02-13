@@ -109,6 +109,7 @@ onMounted(() => {
       :correct-position="piece.correctPosition"
       @drag-start="onDragStart(index)"
       @drop-piece="onDropPiece(index)"
+      @drop-piece-mobile="onDropPiece"
     />
   </div>
 </template>
