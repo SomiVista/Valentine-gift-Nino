@@ -2,24 +2,29 @@
 import { ref, computed } from 'vue'
 import confetti from 'canvas-confetti'
 
+// Import images explicitly
+import kubaPubImage from '@/assets/images/kuba-pub.jpg'
+import istanbulImage from '@/assets/images/first-event-istanbul.jpg'
+import firstYearImage from '@/assets/images/first-year-meet.jpg'
+
 const emit = defineEmits(['complete'])
 
 // USER: CUSTOMIZE QUESTIONS HERE
 const questions = [
   {
     id: 1,
-    question: "Where did we have our first date?",
-    answer: "Paris", // Case insensitive check
+    question: "Where did we have our Christmas 2025?",
+    answer: "Kuba Pub", // Case insensitive check
     type: "text",
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000&auto=format&fit=crop", // Placeholder
-    memory: "That night under the Eiffel Tower..."
+    image: kubaPubImage,
+    memory: "That night on the pub..."
   },
   {
     id: 2,
-    question: "What is your favorite color?",
-    answer: "Blue",
+    question: "What was the first event we attended together in Istanbul?",
+    answer: "Rafting",
     type: "text",
-    image: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?q=80&w=1000&auto=format&fit=crop", // Placeholder
+    image: istanbulImage,
     memory: "Just like the ocean!"
   },
   {
@@ -27,7 +32,7 @@ const questions = [
     question: "What year did we meet?",
     answer: "2020",
     type: "text",
-    image: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1000&auto=format&fit=crop", // Placeholder
+    image: firstYearImage,
     memory: "A crazy year, but the best one because I met you."
   }
 ]
@@ -50,7 +55,7 @@ const checkAnswer = () => {
   if (user === correct) {
     // Correct!
     error.value = false
-    unlockedMemories.push(currentQuestion.value)
+    unlockedMemories.value.push(currentQuestion.value)
     userAnswer.value = ''
     launchMiniConfetti()
     

@@ -2,10 +2,12 @@
 import { ref, onMounted } from 'vue'
 import PuzzleBoard from './components/PuzzleBoard.vue'
 import SecretCodeGame from './components/SecretCodeGame.vue'
+import weddingImage from '@/assets/images/wedding.jpg'
 
 const currentStage = ref(1) // 1: Puzzle, 2: Secret Code, 3: Celebration
 const isMusicPlaying = ref(false)
 const audio = ref(null)
+const puzzleImage = ref(weddingImage)
 
 const nextStage = () => {
   currentStage.value++
@@ -42,14 +44,15 @@ onMounted(() => {
     </button>
     <div v-if="currentStage === 1" class="stage-container">
       <h2>Solve the Puzzle to Begin</h2>
-      <PuzzleBoard @complete="nextStage" />
+      <PuzzleBoard 
+        :image-src="puzzleImage" 
+        @complete="nextStage" 
+      />
       <p class="hint">Drag and drop the pieces to reveal the photo!</p>
-      <button @click="nextStage" class="skip-btn">Skip (Dev Only)</button>
     </div>
     <div v-else-if="currentStage === 2" class="stage-container">
       <h2>Stage 2: Our Secret Story</h2>
       <SecretCodeGame @complete="nextStage" />
-      <button @click="nextStage" class="skip-btn">Skip All (Dev Only)</button>
     </div>
     <div v-else>
       <h1>Happy Valentine's Day!</h1>
