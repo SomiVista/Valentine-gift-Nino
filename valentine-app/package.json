@@ -7,7 +7,9 @@
     "build": "vite build",
     "start": "node server.js",
     "serve": "serve -s dist",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
+    "gh-pages": "^6.3.0",
     "nodemon": "^3.1.11"
   }
 }
